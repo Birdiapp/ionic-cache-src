@@ -5,12 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { IonicCacheSrcModule } from 'ionic-cache-src';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+
+    IonicCacheSrcModule,
+
+
     RouterModule.forChild([
       {
         path: '',
