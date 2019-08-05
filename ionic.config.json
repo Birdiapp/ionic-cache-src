@@ -1,8 +1,7 @@
 {
-    "name": "cache-src",
-    "app_id": "",
-    "type": "ionic-angular",
-    "integrations": {
-        "cordova": {}
-    }
+  "name": "ionic-cache-src-ionic-4+",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
 }

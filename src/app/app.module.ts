@@ -1,46 +1,42 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { RouteReuseStrategy } from '@angular/router';
+
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { IonicCacheSrcModule } from 'ionic-cache-src';
+
 import { IonicStorageModule } from '@ionic/storage';
-import { IonicCacheSrcModule } from 'ionic-cache-src'
-
-import { File } from '@ionic-native/file';
-import { FileTransfer } from '@ionic-native/file-transfer';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx'; 
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
-    bootstrap: [IonicApp],
-    imports: [
-        BrowserModule,
-        IonicModule.forRoot(MyApp),
-        IonicStorageModule.forRoot({
-            name: `__cache-src-app`,
-            driverOrder: ['indexeddb', 'sqlite', 'websql']
-        }),
-        IonicCacheSrcModule
-    ],
-    declarations: [
-        MyApp,
-        HomePage
-    ],
-    entryComponents: [
-        MyApp,
-        HomePage
-    ],
-    providers: [
-        File,
-        FileTransfer,
-        StatusBar,
-        SplashScreen,
+  
+  entryComponents: [],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    IonicStorageModule.forRoot({
+      name: `__cache-src-app`,
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
+    IonicCacheSrcModule
+  ],
+  declarations: [AppComponent],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
-        {
-            provide: ErrorHandler,
-            useClass: IonicErrorHandler
-        }
-    ]
+    File,
+    FileTransfer
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
